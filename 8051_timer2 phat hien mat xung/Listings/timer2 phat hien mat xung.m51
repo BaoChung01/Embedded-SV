@@ -1,0 +1,101 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/26/2023  20:55:42  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\timer2 phat hien mat xung PRINT (.\Listings\timer2 phat hien
+>>  mat xung.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\timer2 phat hien mat xung (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0014H     UNIT         ?PR?MAIN?MAIN
+            CODE    0017H     000FH     UNIT         ?PR?TIMER2_OVERFLOW?MAIN
+                    0026H     0005H                  *** GAP ***
+            CODE    002BH     0003H     ABSOLUTE     
+            CODE    002EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\timer2 phat hien mat xung (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\timer2 phat hien mat xung (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  B:00A8H.7       PUBLIC        EA
+  B:00C8H.6       PUBLIC        EXF2
+  D:00CBH         PUBLIC        RCAP2H
+  D:00CAH         PUBLIC        RCAP2L
+  C:0003H         PUBLIC        main
+  C:0017H         PUBLIC        timer2_overflow
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2023  20:55:42  PAGE 2
+
+
+  B:00A8H.5       PUBLIC        ET2
+  B:00C8H.7       PUBLIC        TF2
+  B:00C8H.2       PUBLIC        TR2
+  D:00C9H         PUBLIC        T2MOD
+  D:00C8H         PUBLIC        T2CON
+  -------         PROC          MAIN
+  C:0003H         LINE#         3
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0006H         LINE#         6
+  C:0009H         LINE#         8
+  C:000CH         LINE#         9
+  C:000FH         LINE#         11
+  C:0011H         LINE#         13
+  C:0013H         LINE#         14
+  C:0015H         LINE#         15
+  C:0015H         LINE#         16
+  C:0015H         LINE#         18
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER2_OVERFLOW
+  C:0017H         LINE#         20
+  C:0017H         LINE#         22
+  C:001AH         LINE#         23
+  C:001AH         LINE#         24
+  C:001CH         LINE#         25
+  C:001EH         LINE#         26
+  C:001FH         LINE#         28
+  C:001FH         LINE#         29
+  C:0021H         LINE#         30
+  C:0023H         LINE#         31
+  C:0025H         LINE#         32
+  C:0025H         LINE#         33
+  -------         ENDPROC       TIMER2_OVERFLOW
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=53
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

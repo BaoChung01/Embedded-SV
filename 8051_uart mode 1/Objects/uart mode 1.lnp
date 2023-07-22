@@ -1,0 +1,6 @@
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\uartmode1.obj" 
+TO ".\Objects\uart mode 1" 
+
+PRINT(".\Listings\uart mode 1.map") ru 
