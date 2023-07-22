@@ -1,0 +1,135 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/13/2023  21:50:46  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\sangdantatdan PRINT (.\Listings\sangdan
+>> tatdan.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\sangdantatdan (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0043H     UNIT         ?PR?SANGDANTATDAN?MAIN
+            CODE    0046H     0027H     UNIT         ?PR?CHOPTATXENKE?MAIN
+            CODE    006DH     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    008DH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0099H     0008H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\sangdantatdan (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?SANGDANTATDAN?MAIN
+  +--> ?PR?CHOPTATXENKE?MAIN
+
+?PR?SANGDANTATDAN?MAIN         0008H    0001H
+  +--> ?PR?_DELAY_MS?DELAY
+
+?PR?CHOPTATXENKE?MAIN          0008H    0001H
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\sangdantatdan (MAIN)
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/13/2023  21:50:46  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0046H         PUBLIC        choptatxenke
+  C:0099H         PUBLIC        main
+  C:0003H         PUBLIC        sangdantatdan
+  -------         PROC          SANGDANTATDAN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         7
+  C:0003H         LINE#         8
+  C:0003H         LINE#         10
+  C:0006H         LINE#         11
+  C:0013H         LINE#         12
+  C:001BH         LINE#         13
+  C:0022H         LINE#         14
+  C:0026H         LINE#         15
+  C:0034H         LINE#         16
+  C:003AH         LINE#         17
+  C:0041H         LINE#         18
+  C:0045H         LINE#         19
+  -------         ENDPROC       SANGDANTATDAN
+  -------         PROC          CHOPTATXENKE
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0046H         LINE#         20
+  C:0046H         LINE#         22
+  C:0054H         LINE#         23
+  C:0057H         LINE#         24
+  C:005EH         LINE#         25
+  C:0061H         LINE#         26
+  C:0068H         LINE#         28
+  C:006CH         LINE#         29
+  -------         ENDPROC       CHOPTATXENKE
+  -------         PROC          MAIN
+  C:0099H         LINE#         30
+  C:0099H         LINE#         32
+  C:0099H         LINE#         33
+  C:009CH         LINE#         34
+  C:009FH         LINE#         36
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:006DH         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/13/2023  21:50:46  PAGE 3
+
+
+  C:006DH         LINE#         5
+  C:006DH         LINE#         6
+  C:006DH         LINE#         8
+  C:0077H         LINE#         9
+  C:0077H         LINE#         10
+  C:0085H         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+Program Size: data=10.0 xdata=0 code=161
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

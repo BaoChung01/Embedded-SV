@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\phep or" 
+PRINT(".\Listings\phep or.m51") RAMSIZE(256) 

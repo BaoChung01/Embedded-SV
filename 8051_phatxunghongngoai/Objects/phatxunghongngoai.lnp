@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\phatxunghongngoai" 
+PRINT(".\Listings\phatxunghongngoai.m51") RAMSIZE(256) 
