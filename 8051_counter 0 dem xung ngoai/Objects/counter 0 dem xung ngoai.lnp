@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\counter 0 dem xung ngoai" 
+PRINT(".\Listings\counter 0 dem xung ngoai.m51") RAMSIZE(256) 

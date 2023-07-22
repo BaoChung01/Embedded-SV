@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\DAC mang dien tro R 2R" 
+PRINT(".\Listings\DAC mang dien tro R 2R.m51") RAMSIZE(256) 

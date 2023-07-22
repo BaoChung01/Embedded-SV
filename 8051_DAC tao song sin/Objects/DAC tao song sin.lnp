@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\DAC tao song sin" 
+PRINT(".\Listings\DAC tao song sin.m51") RAMSIZE(256) 

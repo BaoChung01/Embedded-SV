@@ -1,0 +1,88 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/25/2023 22:02:33 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "..\library\delay.h"
+   3          unsigned char code code7seg[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+   4          
+   5          void display(unsigned int n)
+   6          {
+   7   1        unsigned char chuc_ngan,ngan,tram,chuc,dvi;
+   8   1        chuc_ngan=n/10000;
+   9   1        n%=10000;
+  10   1        ngan=n/1000;
+  11   1        n%=1000;
+  12   1        tram=n/100;
+  13   1        n%=100;
+  14   1        chuc=n/10;
+  15   1        dvi=n%10;
+  16   1        
+  17   1        P0=code7seg[chuc_ngan];
+  18   1        P2_4=0;
+  19   1        delay_ms(1);
+  20   1        P2_4=1;
+  21   1        
+  22   1        P0=code7seg[ngan];
+  23   1        P2_3=0;
+  24   1        delay_ms(1);
+  25   1        P2_3=1;
+  26   1        
+  27   1        P0=code7seg[tram];
+  28   1        P2_2=0;
+  29   1        delay_ms(1);
+  30   1        P2_2=1;
+  31   1        
+  32   1        P0=code7seg[chuc];
+  33   1        P2_1=0;
+  34   1        delay_ms(1);
+  35   1        P2_1=1;
+  36   1        
+  37   1        P0=code7seg[dvi];
+  38   1        P2_0=0;
+  39   1        delay_ms(1);
+  40   1        P2_0=1;
+  41   1      }
+  42          void main()
+  43          { 
+  44   1        unsigned char low,high;
+  45   1        unsigned int number;
+  46   1        TMOD &=0xF0;
+  47   1        TMOD |=0x05;
+  48   1        TR0=1;
+  49   1        
+  50   1        while(1)
+  51   1        {
+  52   2          do {
+  53   3          high=TH0;
+  54   3          low=TL0;
+C51 COMPILER V9.60.0.0   MAIN                                                              04/25/2023 22:02:33 PAGE 2   
+
+  55   3          }while(high!=TH0);
+  56   2          number=high;
+  57   2          number<<=8;
+  58   2          number |=low;
+  59   2          
+  60   2          display(number);
+  61   2        }
+  62   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    250    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
