@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\hieu ung" 
+PRINT(".\Listings\hieu ung.m51") RAMSIZE(256) 

@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\ic chot" 
+PRINT(".\Listings\ic chot.m51") RAMSIZE(256) 

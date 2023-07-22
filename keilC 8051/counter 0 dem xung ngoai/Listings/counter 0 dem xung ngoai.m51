@@ -1,0 +1,174 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/25/2023  22:02:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\counter 0 dem xung ngoai PRINT (.\Listi
+>> ngs\counter 0 dem xung ngoai.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\counter 0 dem xung ngoai (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0009H     UNIT         _DATA_GROUP_
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00CEH     UNIT         ?PR?_DISPLAY?MAIN
+            CODE    00D1H     0055H     UNIT         ?C?LIB_CODE
+            CODE    0126H     002CH     UNIT         ?PR?MAIN?MAIN
+            CODE    0152H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0172H     000CH     UNIT         ?C_C51STARTUP
+            CODE    017EH     000AH     UNIT         ?CO?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\counter 0 dem xung ngoai (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0004H
+  +--> ?PR?_DISPLAY?MAIN
+
+?PR?_DISPLAY?MAIN              000CH    0005H
+  +--> ?CO?MAIN
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\counter 0 dem xung ngoai (MAIN)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2023  22:02:33  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  B:00A0H.0       PUBLIC        P2_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  C:017EH         PUBLIC        code7seg
+  B:00A0H.4       PUBLIC        P2_4
+  C:0126H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:0003H         PUBLIC        _display
+  -------         PROC          _DISPLAY
+  D:0002H         SYMBOL        n
+  -------         DO            
+  D:000CH         SYMBOL        chuc_ngan
+  D:000DH         SYMBOL        ngan
+  D:000EH         SYMBOL        tram
+  D:000FH         SYMBOL        chuc
+  D:0010H         SYMBOL        dvi
+  -------         ENDDO         
+  C:0003H         LINE#         5
+  C:0007H         LINE#         6
+  C:0007H         LINE#         8
+  C:0010H         LINE#         9
+  C:001FH         LINE#         10
+  C:002CH         LINE#         11
+  C:003BH         LINE#         12
+  C:0048H         LINE#         13
+  C:0057H         LINE#         14
+  C:0064H         LINE#         15
+  C:0071H         LINE#         17
+  C:0079H         LINE#         18
+  C:007BH         LINE#         19
+  C:0082H         LINE#         20
+  C:0084H         LINE#         22
+  C:008CH         LINE#         23
+  C:008EH         LINE#         24
+  C:0095H         LINE#         25
+  C:0097H         LINE#         27
+  C:009FH         LINE#         28
+  C:00A1H         LINE#         29
+  C:00A8H         LINE#         30
+  C:00AAH         LINE#         32
+  C:00B2H         LINE#         33
+  C:00B4H         LINE#         34
+  C:00BBH         LINE#         35
+  C:00BDH         LINE#         37
+  C:00C5H         LINE#         38
+  C:00C7H         LINE#         39
+  C:00CEH         LINE#         40
+  C:00D0H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2023  22:02:33  PAGE 3
+
+
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        low
+  D:0009H         SYMBOL        high
+  D:000AH         SYMBOL        number
+  -------         ENDDO         
+  C:0126H         LINE#         42
+  C:0126H         LINE#         43
+  C:0126H         LINE#         46
+  C:0129H         LINE#         47
+  C:012CH         LINE#         48
+  C:012EH         LINE#         50
+  C:012EH         LINE#         51
+  C:012EH         LINE#         52
+  C:012EH         LINE#         53
+  C:0131H         LINE#         54
+  C:0134H         LINE#         55
+  C:0139H         LINE#         56
+  C:013EH         LINE#         57
+  C:0145H         LINE#         58
+  C:0149H         LINE#         60
+  C:0150H         LINE#         61
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0152H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0152H         LINE#         5
+  C:0152H         LINE#         6
+  C:0152H         LINE#         8
+  C:015CH         LINE#         9
+  C:015CH         LINE#         10
+  C:016AH         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        ?C?UIDIV
+  C:00D1H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=18.0 xdata=0 code=392
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

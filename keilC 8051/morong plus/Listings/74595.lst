@@ -1,0 +1,44 @@
+C51 COMPILER V9.60.0.0   74595                                                             04/17/2023 23:03:47 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 74595
+OBJECT MODULE PLACED IN .\Objects\74595.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\Library\74595.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\74595.lst) TABS(2) OBJECT(.\Objects\74595.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "74595.h"
+   3          #include "port.h"
+   4          
+   5          void  IE74595_OUT (unsigned char *p,unsigned char n)
+   6          {
+   7   1        unsigned char i,b,j;
+   8   1        for (j=0;j<n;j++)
+   9   1        {     b=*(p+n-j-1);
+  10   2          for(i=0;i<8;i++)
+  11   2          {
+  12   3            IE74595_DS= b & (0X80>>i);//lay tung bit cua byte b gui ra DS, lay bit MSB truoc
+  13   3            //tao xung du lieu
+  14   3            IE74595_SHCP=0;
+  15   3            IE74595_SHCP=1;
+  16   3        }
+  17   2      }
+  18   1                IE74595_STCP=0;
+  19   1                IE74595_STCP=1;
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    103    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

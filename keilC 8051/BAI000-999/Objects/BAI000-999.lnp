@@ -1,0 +1,4 @@
+".\Objects\MAIN.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\BAI000-999" 
+PRINT(".\Listings\BAI000-999.m51") RAMSIZE(256) 

@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\uart mode 0 mo rong ngo vao" 
+PRINT(".\Listings\uart mode 0 mo rong ngo vao.m51") RAMSIZE(256) 

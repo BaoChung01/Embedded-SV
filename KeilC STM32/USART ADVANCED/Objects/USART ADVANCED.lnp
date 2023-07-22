@@ -1,0 +1,11 @@
+--cpu Cortex-M3
+".\objects\main.o"
+".\objects\gp_drive.o"
+".\objects\systick_time.o"
+".\objects\uart_drive.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\USART ADVANCED.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\USART ADVANCED.map" -o ".\Objects\USART ADVANCED.axf"

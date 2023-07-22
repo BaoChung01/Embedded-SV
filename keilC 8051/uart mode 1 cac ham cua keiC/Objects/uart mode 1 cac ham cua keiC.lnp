@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\uartmode1.obj" 
+TO ".\Objects\uart mode 1 cac ham cua keiC" 
+
+PRINT(".\Listings\uart mode 1 cac ham cua keiC.map") ru 

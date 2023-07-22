@@ -1,0 +1,3 @@
+".\Objects\MAIN.obj" 
+TO ".\Objects\TIMER 2 TAO XUNG CLOCK" 
+PRINT(".\Listings\TIMER 2 TAO XUNG CLOCK.m51") RAMSIZE(256) 

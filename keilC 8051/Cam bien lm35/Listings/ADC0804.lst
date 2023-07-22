@@ -1,0 +1,48 @@
+C51 COMPILER V9.60.0.0   ADC0804                                                           04/29/2023 22:22:41 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC0804
+OBJECT MODULE PLACED IN .\Objects\ADC0804.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\Library\ADC0804.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\ADC0804.lst) TABS(2) OBJECT(.\Objects\ADC0804.obj)
+
+line level    source
+
+   1          //#define AC0804_DATA P2
+   2          //sbit ADC0804_CS=P3^0;
+   3          //sbit ADC0804_RD=P3^1;
+   4          //sbit ADC0804_WR=P3^2;
+   5          //sbit ADC0804_INTR=P3^3;
+   6          
+   7          #include "main.h"
+   8          #include  "ADC0804.h"
+   9          #include "PORT.h"
+  10          unsigned char ADC0804_Read()
+  11          { 
+  12   1        unsigned char kq;
+  13   1          ADC0804_CS=0;
+  14   1      
+  15   1        ADC0804_WR=0;
+  16   1        ADC0804_WR=1;
+  17   1        
+  18   1        while(ADC0804_INTR)
+  19   1        ADC0804_RD=0;
+  20   1        kq=ADC0804_DATA;
+  21   1        ADC0804_RD=1;
+  22   1        return kq;
+  23   1        
+  24   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     18    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

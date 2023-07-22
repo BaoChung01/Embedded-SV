@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\thu phat hong ngoai UART" 
+PRINT(".\Listings\thu phat hong ngoai UART.m51") RAMSIZE(256) 

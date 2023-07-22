@@ -1,0 +1,7 @@
+--cpu Cortex-M3
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\GPIO INPUT OUTPUT.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\GPIO INPUT OUTPUT.map" -o ".\Objects\GPIO INPUT OUTPUT.axf"

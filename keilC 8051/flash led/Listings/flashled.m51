@@ -1,0 +1,88 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/08/2023  20:02:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\flashled PRINT (.\Listings\flashled.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\flashled (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0020H     UNIT         ?PR?_DELAY_MS?MAIN
+            CODE    0023H     000CH     UNIT         ?C_C51STARTUP
+            CODE    002FH     000BH     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\flashled (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAY_MS?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\flashled (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:002FH         PUBLIC        main
+  B:0080H.0       PUBLIC        led
+  C:0003H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/08/2023  20:02:38  PAGE 2
+
+
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         7
+  C:000DH         LINE#         8
+  C:000DH         LINE#         9
+  C:001BH         LINE#         10
+  C:0022H         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  C:002FH         LINE#         12
+  C:002FH         LINE#         13
+  C:002FH         LINE#         14
+  C:002FH         LINE#         15
+  C:002FH         LINE#         16
+  C:0031H         LINE#         17
+  C:0038H         LINE#         18
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=58
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\dongho" 
+PRINT(".\Listings\dongho.m51") RAMSIZE(256) 

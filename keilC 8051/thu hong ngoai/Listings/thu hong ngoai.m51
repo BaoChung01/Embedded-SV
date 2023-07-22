@@ -1,0 +1,112 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/26/2023  22:34:25  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\thu hong ngoai PRINT (.\Listings\thu ho
+>> ng ngoai.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\thu hong ngoai (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     003DH     UNIT         ?PR?MAIN?MAIN
+            CODE    0040H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0060H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\thu hong ngoai (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0002H
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\thu hong ngoai (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  B:00B0H.2       PUBLIC        P3_2
+  C:0003H         PUBLIC        main
+  -------         PROC          MAIN
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2023  22:34:25  PAGE 2
+
+
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:0009H         SYMBOL        b
+  -------         ENDDO         
+  C:0003H         LINE#         3
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+  C:0003H         LINE#         7
+  C:0006H         LINE#         8
+  C:0009H         LINE#         9
+  C:0016H         LINE#         10
+  C:0016H         LINE#         11
+  C:001CH         LINE#         12
+  C:0023H         LINE#         13
+  C:0026H         LINE#         14
+  C:0026H         LINE#         15
+  C:0029H         LINE#         16
+  C:002BH         LINE#         18
+  C:002BH         LINE#         19
+  C:002EH         LINE#         20
+  C:002EH         LINE#         21
+  C:0037H         LINE#         22
+  C:003BH         LINE#         23
+  C:003EH         LINE#         24
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0040H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0040H         LINE#         5
+  C:0040H         LINE#         6
+  C:0040H         LINE#         8
+  C:004AH         LINE#         9
+  C:004AH         LINE#         10
+  C:0058H         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+Program Size: data=11.0 xdata=0 code=108
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

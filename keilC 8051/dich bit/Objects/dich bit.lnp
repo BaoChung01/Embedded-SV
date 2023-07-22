@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\dich bit" 
+PRINT(".\Listings\dich bit.m51") RAMSIZE(256) 

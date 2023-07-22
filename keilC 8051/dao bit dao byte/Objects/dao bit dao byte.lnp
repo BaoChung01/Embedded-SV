@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\dao bit dao byte" 
+PRINT(".\Listings\dao bit dao byte.m51") RAMSIZE(256) 

@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\timer2autoreload_delay1s" 
+PRINT(".\Listings\timer2autoreload_delay1s.m51") RAMSIZE(256) 

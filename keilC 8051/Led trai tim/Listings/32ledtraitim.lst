@@ -1,0 +1,163 @@
+A51 MACRO ASSEMBLER  32LEDTRAITIM                                                         04/11/2022 01:31:13 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\32ledtraitim.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 32ledtraitim.asm SET(SMALL) DEBUG PRINT(.\Listings\32ledtraitim.lst) OB
+                      JECT(.\Objects\32ledtraitim.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;;;;;;;;;;;;;;;;=========AUTO GROOT=======;;;;;;;;;;;;;;
+                       2     ;;;;;;;===HUONG DAN LAP TRINH VI DIEU KHIEN 8051 BANG NGON NGU ASSEMBLY======;;;;;;;;
+                       3     ;;;;;;;;;;;;;;;;;;;;;====---------32 LED TRAI TIM-----=========;;;;;;;;;;;;;;;;;;;
+                       4     
+                       5     ;;;;;;;;--------------CHUONG TRINH CHINH----------;;;;;;;;;;;;;
+0000                   6     ORG 0000H
+0000                   7     MAIN:   
+0000 1114              8                     CALL CT1
+0002 114D              9                     CALL CT2
+0004 116C             10                     CALL CT3
+0006 118B             11                     CALL CT4
+0008 119D             12                     CALL CT5
+000A 118B             13                     CALL CT4
+000C 119D             14                     CALL CT5
+000E 118B             15                     CALL CT4
+0010 119D             16                     CALL CT5                
+0012 80EC             17                     JMP MAIN
+                      18     ;;;;;;;;--------------CHUONG TRINH CON 1-----------;;;;;;;;;;;;;;
+0014                  19     CT1:                  ;SANG VONG;
+0014 758000           20                     MOV P0,#00H
+0017 759000           21                     MOV P1,#00H
+001A 75A000           22                     MOV P2,#00H
+001D 75B000           23                     MOV P3,#00H             
+0020 7400             24                     MOV A,#00H
+0022 D3               25     LAP1:   SETB C
+0023 33               26                     RLC A
+0024 F580             27                     MOV P0,A
+0026 11AF             28                     CALL DELAY
+0028 B4FFF7           29                     CJNE A,#0FFH,LAP1
+002B 7400             30                     MOV A,#00H
+002D D3               31     LAP2:   SETB C
+002E 33               32                     RLC A
+002F F590             33                     MOV P1,A
+0031 11AF             34                     CALL DELAY
+0033 B4FFF7           35                     CJNE A,#0FFH,LAP2
+0036 7400             36                     MOV A,#00H
+0038 D3               37     LAP3:   SETB C
+0039 33               38                     RLC A
+003A F5A0             39                     MOV P2,A
+003C 11AF             40                     CALL DELAY
+003E B4FFF7           41                     CJNE A,#0FFH,LAP3
+0041 7400             42                     MOV A,#00H
+0043 D3               43     LAP4:   SETB C
+0044 33               44                     RLC A
+0045 F5B0             45                     MOV P3,A
+0047 11AF             46                     CALL DELAY
+0049 B4FFF7           47                     CJNE A,#0FFH,LAP4
+004C 22               48     RET
+                      49     ;;;;;;;;--------------CHUONG TRINH CON 2-----------;;;;;;;;;;;;;;
+004D                  50     CT2:                  
+004D 7F09             51                     MOV R7,#9
+004F 758000           52     LAN1:   MOV P0,#00H
+0052 75A000           53                     MOV P2,#00H
+0055 7590FF           54                     MOV P1,#0FFH
+0058 75B0FF           55                     MOV P3,#0FFH
+005B 11AF             56                     CALL DELAY
+005D 759000           57                     MOV P1,#00H
+A51 MACRO ASSEMBLER  32LEDTRAITIM                                                         04/11/2022 01:31:13 PAGE     2
+
+0060 75B000           58                     MOV P3,#00H
+0063 7580FF           59                     MOV P0,#0FFH
+0066 75A0FF           60                     MOV P2,#0FFH            
+0069 11AF             61                     CALL DELAY
+006B 22               62     RET
+                      63     ;;;;;;;;--------------CHUONG TRINH CON 3-----------;;;;;;;;;;;;;;
+006C                  64     CT3:     
+006C 758055           65     LAN2:   MOV P0,#01010101B
+006F 759055           66                     MOV P1,#01010101B
+0072 75A055           67                     MOV P2,#01010101B
+0075 75B055           68                     MOV P3,#01010101B
+0078 11AF             69                     CALL DELAY
+007A 7580AA           70                     MOV P0,#10101010B
+007D 7590AA           71                     MOV P1,#10101010B
+0080 75A0AA           72                     MOV P2,#10101010B
+0083 75B0AA           73                     MOV P3,#10101010B
+0086 11AF             74                     CALL DELAY
+0088 DFE2             75                     DJNZ R7,LAN2
+008A 22               76     RET
+                      77     ;;;;;;;;--------------CHUONG TRINH CON 4-----------;;;;;;;;;;;;;;
+008B                  78     CT4:
+008B 7400             79                     MOV A,#00H
+008D D3               80     LAP5:   SETB C
+008E 13               81                     RRC A
+008F F580             82                     MOV P0,A
+0091 F590             83                     MOV P1,A
+0093 F5A0             84                     MOV P2,A
+0095 F5B0             85                     MOV P3,A
+0097 11AF             86                     CALL DELAY
+0099 B4FFF1           87                     CJNE A,#0FFH,LAP5
+009C 22               88     RET
+                      89     ;;;;;;;;--------------CHUONG TRINH CON 5-----------;;;;;;;;;;;;;;
+009D                  90     CT5:
+009D 7400             91                     MOV A,#00H
+009F D3               92     LAP6:   SETB C
+00A0 33               93                     RLC A
+00A1 F580             94                     MOV P0,A
+00A3 F590             95                     MOV P1,A
+00A5 F5A0             96                     MOV P2,A
+00A7 F5B0             97                     MOV P3,A
+00A9 11AF             98                     CALL DELAY
+00AB B4FFF1           99                     CJNE A,#0FFH,LAP6
+00AE 22              100     RET
+                     101     ;;;;;;;;--------------CHUONG TRINH DELAY-----------;;;;;;;;;;;;;;
+00AF 7932            102     DELAY:  MOV R1,#50
+00B1 78C8            103     LOOP1:  MOV R0,#200
+00B3 00              104     LOOP2:  NOP
+00B4 00              105                     NOP
+00B5 00              106                     NOP
+00B6 D8FB            107                     DJNZ R0,LOOP2
+00B8 D9F7            108                     DJNZ R1,LOOP1
+00BA 22              109     RET
+                     110     END
+                             ;;================================================================
+                             
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  32LEDTRAITIM                                                         04/11/2022 01:31:13 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CT1. . . . . . . .  C ADDR   0014H   A   
+CT2. . . . . . . .  C ADDR   004DH   A   
+CT3. . . . . . . .  C ADDR   006CH   A   
+CT4. . . . . . . .  C ADDR   008BH   A   
+CT5. . . . . . . .  C ADDR   009DH   A   
+DELAY. . . . . . .  C ADDR   00AFH   A   
+LAN1 . . . . . . .  C ADDR   004FH   A   
+LAN2 . . . . . . .  C ADDR   006CH   A   
+LAP1 . . . . . . .  C ADDR   0022H   A   
+LAP2 . . . . . . .  C ADDR   002DH   A   
+LAP3 . . . . . . .  C ADDR   0038H   A   
+LAP4 . . . . . . .  C ADDR   0043H   A   
+LAP5 . . . . . . .  C ADDR   008DH   A   
+LAP6 . . . . . . .  C ADDR   009FH   A   
+LOOP1. . . . . . .  C ADDR   00B1H   A   
+LOOP2. . . . . . .  C ADDR   00B3H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

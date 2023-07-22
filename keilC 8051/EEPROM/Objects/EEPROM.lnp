@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\EEPROM" 
+PRINT(".\Listings\EEPROM.m51") RAMSIZE(256) 

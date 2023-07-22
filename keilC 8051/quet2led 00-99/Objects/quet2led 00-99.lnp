@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\quet2led 00-99" 
+PRINT(".\Listings\quet2led 00-99.m51") RAMSIZE(256) 

@@ -1,0 +1,60 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/13/2023 21:50:46 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          
+   2          #include "main.h"
+   3          #include"..\library\delay.h"
+   4          
+   5          #define led_port P2
+   6          
+   7          void sangdantatdan()
+   8          { unsigned char i;
+   9   1        //sang dan
+  10   1        led_port =0x00;
+  11   1        for (i=0;i<8;i++){
+  12   2          led_port = (led_port<<1)|0x01;
+  13   2          delay_ms(200);
+  14   2      }// tat dan
+  15   1        for (i=0;i<8;i++){
+  16   2          led_port = led_port<<1;
+  17   2          delay_ms(200);
+  18   2        }
+  19   1      }
+  20          void choptatxenke(){
+  21   1      unsigned char i;
+  22   1        for(i=0;i<10;i++){
+  23   2        led_port =0x55;
+  24   2          delay_ms(200);
+  25   2          led_port=0xAA;
+  26   2          delay_ms(200);
+  27   2          
+  28   2        }
+  29   1      }
+  30          void main(){
+  31   1        
+  32   1      while(1){
+  33   2        sangdantatdan();
+  34   2        choptatxenke();
+  35   2      
+  36   2      }}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    114    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

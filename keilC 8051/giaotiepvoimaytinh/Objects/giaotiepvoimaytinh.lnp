@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\giaotiepvoimaytinh" 
+PRINT(".\Listings\giaotiepvoimaytinh.m51") RAMSIZE(256) 

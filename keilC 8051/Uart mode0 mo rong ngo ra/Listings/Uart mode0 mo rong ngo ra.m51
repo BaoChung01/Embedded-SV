@@ -1,0 +1,118 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/22/2023  22:41:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\Uart mode0 mo rong ngo ra PRINT (.\List
+>> ings\Uart mode0 mo rong ngo ra.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Uart mode0 mo rong ngo ra (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     002EH     UNIT         ?PR?MAIN?MAIN
+            CODE    0031H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0051H     000CH     UNIT         ?PR?_UART_MODE0_WRITE?MAIN
+            CODE    005DH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Uart mode0 mo rong ngo ra (MAIN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                      0008H    0001H
+  +--> ?PR?_UART_MODE0_WRITE?MAIN
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Uart mode0 mo rong ngo ra (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0051H         PUBLIC        _uart_mode0_write
+  B:00B0H.2       PUBLIC        P3_2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/22/2023  22:41:20  PAGE 2
+
+
+  B:0098H.1       PUBLIC        TI
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  -------         PROC          _UART_MODE0_WRITE
+  D:0007H         SYMBOL        b
+  C:0051H         LINE#         3
+  C:0051H         LINE#         4
+  C:0051H         LINE#         5
+  C:0053H         LINE#         6
+  C:0056H         LINE#         7
+  C:0058H         LINE#         9
+  C:005AH         LINE#         10
+  C:005CH         LINE#         11
+  -------         ENDPROC       _UART_MODE0_WRITE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         12
+  C:0003H         LINE#         13
+  C:0003H         LINE#         15
+  C:0007H         LINE#         16
+  C:0007H         LINE#         17
+  C:0015H         LINE#         18
+  C:0015H         LINE#         19
+  C:001AH         LINE#         20
+  C:0021H         LINE#         21
+  C:0026H         LINE#         22
+  C:002DH         LINE#         23
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0031H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0031H         LINE#         5
+  C:0031H         LINE#         6
+  C:0031H         LINE#         8
+  C:003BH         LINE#         9
+  C:003BH         LINE#         10
+  C:0049H         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+Program Size: data=10.0 xdata=0 code=105
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

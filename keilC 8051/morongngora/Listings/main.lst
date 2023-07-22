@@ -1,0 +1,58 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/17/2023 21:59:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "../library/delay.h"
+   3          sbit IE74595_SHCP=P2^0;
+   4          sbit IE74595_DS=P2^1;
+   5          sbit IE74595_STCP=P2^2;
+   6          void  IE74595_OUT_BYTE (unsigned char b)
+   7          {
+   8   1        unsigned char i;
+   9   1        for (i=0;i<8;i++)
+  10   1        {
+  11   2            IE74595_DS= b & (0X80>>i);//lay tung bit cua byte b gui ra DS, lay bit MSB truoc
+  12   2            //tao xung du lieu
+  13   2            IE74595_SHCP=0;
+  14   2            IE74595_SHCP=1;
+  15   2        }
+  16   1                IE74595_STCP=0;
+  17   1                IE74595_STCP=1;
+  18   1      }
+  19          
+  20          void main()
+  21          { unsigned char b,i;
+  22   1          while(1)
+  23   1          {   
+  24   2              b=0;
+  25   2              IE74595_OUT_BYTE(b);
+  26   2              delay_ms(300);
+  27   2              for(i=0;i<8;i++)
+  28   2            {
+  29   3                b=(b<<1)|0x01;
+  30   3              IE74595_OUT_BYTE(b);
+  31   3                delay_ms(300);
+  32   3            }
+  33   2          } 
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    106    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\phat hong ngoai" 
+PRINT(".\Listings\phat hong ngoai.m51") RAMSIZE(256) 

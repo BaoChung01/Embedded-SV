@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\IO 8051" 
+PRINT(".\Listings\IO 8051.m51") RAMSIZE(256) 
