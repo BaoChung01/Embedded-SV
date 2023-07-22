@@ -1,0 +1,162 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/30/2023 23:50:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          #define DS18B20_SKIP_ROM    0xCC
+   4          #define DS18B20_CONVERT_T   0x44
+   5          #define DS18B20_READ_SCRATCH_PAD 0xBE 
+   6          sbit DS18B20_PIN=P1^0;
+   7          unsigned char code code7seg[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+   8          void T0_delay_us(unsigned int t)
+   9          {
+  10   1        unsigned int load_value;
+  11   1        load_value=65536-t;
+  12   1        TH0=load_value>>8;
+  13   1        TL0=load_value&0x00FF;
+  14   1        TR0=1;
+  15   1        while(!TF0);
+  16   1        TR0=0;
+  17   1        TF0=0;
+  18   1      }
+  19          // return 0 ok
+  20          // return 1 not ok
+  21          void Delay_ms(unsigned int t)
+  22          {
+  23   1          unsigned int x,y;
+  24   1        for(x=0;x<<t;x++)
+  25   1        {
+  26   2          for(y=0;y<=123;y++);
+  27   2        }
+  28   1      }
+  29          unsigned char DS18B20_Reset()
+  30          {   
+  31   1        unsigned char result;
+  32   1          DS18B20_PIN=0;
+  33   1          T0_delay_us(480);
+  34   1        
+  35   1          DS18B20_PIN=1;
+  36   1          T0_delay_us(70);
+  37   1        
+  38   1          result=DS18B20_PIN;
+  39   1          T0_delay_us(6);
+  40   1      
+  41   1        
+  42   1        return result;
+  43   1      }
+  44          void DS18B20_Write1()
+  45          {
+  46   1        DS18B20_PIN=0;
+  47   1        T0_delay_us(6);
+  48   1        DS18B20_PIN=1;
+  49   1        T0_delay_us(64);
+  50   1      }
+  51          void DS18B20_Write0()
+  52          {
+  53   1        DS18B20_PIN=0;
+  54   1        T0_delay_us(60);
+C51 COMPILER V9.60.0.0   MAIN                                                              04/30/2023 23:50:04 PAGE 2   
+
+  55   1        DS18B20_PIN=1;
+  56   1        T0_delay_us(10);
+  57   1      }
+  58          void DS18B20_Write_Bit(unsigned char b)
+  59          {
+  60   1          if(b==1)
+  61   1          {
+  62   2               DS18B20_Write1();
+  63   2          }
+  64   1          else
+  65   1          {
+  66   2              DS18B20_Write0();
+  67   2          }
+  68   1      }
+  69          unsigned char DS18B20_Read_Bit()
+  70          {
+  71   1            unsigned char result;
+  72   1            
+  73   1            DS18B20_PIN=0;
+  74   1            T0_delay_us(6);
+  75   1        
+  76   1            DS18B20_PIN=1;
+  77   1            T0_delay_us(9);
+  78   1        
+  79   1            result=DS18B20_PIN;
+  80   1            T0_delay_us(55);
+  81   1            
+  82   1        return result;
+  83   1      }
+  84          void DS18B20_Write_Byte(unsigned char b)
+  85          {
+  86   1          unsigned char i=8;
+  87   1          
+  88   1          while(i--)
+  89   1          {
+  90   2            DS18B20_Write_Bit(b&0x01);
+  91   2            b>>=1;
+  92   2          }
+  93   1      }
+  94          unsigned char DS18B20_Read_Byte()
+  95          {
+  96   1        unsigned char i=8,result=0;
+  97   1        while(i--)
+  98   1        {
+  99   2              result>>=1;
+ 100   2              result|=DS18B20_Read_Bit()<<7;
+ 101   2        }
+ 102   1        return result;
+ 103   1      }
+ 104          void main()
+ 105          { unsigned int temp;
+ 106   1        unsigned char int_part,decimal_part;
+ 107   1        unsigned char chuc,dvi;
+ 108   1        TMOD|=0x01; //TIMER 0 HOAT DONG O CHE DO 1
+ 109   1        while(1)
+ 110   1        {
+ 111   2          while(DS18B20_Reset());
+ 112   2          DS18B20_Write_Byte(DS18B20_SKIP_ROM);
+ 113   2          DS18B20_Write_Byte(DS18B20_CONVERT_T);
+ 114   2          Delay_ms(750);
+ 115   2          while(DS18B20_Reset());
+ 116   2          DS18B20_Write_Byte(DS18B20_SKIP_ROM);
+C51 COMPILER V9.60.0.0   MAIN                                                              04/30/2023 23:50:04 PAGE 3   
+
+ 117   2          DS18B20_Write_Byte(DS18B20_READ_SCRATCH_PAD);
+ 118   2          
+ 119   2          temp=DS18B20_Read_Byte();
+ 120   2          temp=(DS18B20_Read_Byte()<<8)|temp;
+ 121   2          
+ 122   2          int_part=temp>>4;
+ 123   2          chuc=int_part/10;
+ 124   2          dvi=int_part%10;
+ 125   2          
+ 126   2          decimal_part=temp&0x000F;
+ 127   2          decimal_part=(decimal_part*10)/16;
+ 128   2          
+ 129   2          P0=code7seg[chuc];
+ 130   2          P2=code7seg[dvi];
+ 131   2          P3=code7seg[decimal_part];
+ 132   2          
+ 133   2        }
+ 134   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    345    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

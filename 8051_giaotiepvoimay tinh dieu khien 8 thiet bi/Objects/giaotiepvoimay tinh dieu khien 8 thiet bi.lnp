@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\giaotiepvoimay tinh dieu khien 8 thiet bi" 
+PRINT(".\Listings\giaotiepvoimay tinh dieu khien 8 thiet bi.m51") RAMSIZE(256) 
