@@ -1,0 +1,129 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/17/2023  21:59:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\74595 PRINT (.\Listings\74595.m51) RAMS
+>> IZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\74595 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0036H     UNIT         ?PR?_IE74595_OUT_BYTE?MAIN
+            CODE    0039H     0034H     UNIT         ?PR?MAIN?MAIN
+            CODE    006DH     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    008DH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\74595 (MAIN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                      0008H    0002H
+  +--> ?PR?_IE74595_OUT_BYTE?MAIN
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\74595 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        _IE74595_OUT_BYTE
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2023  21:59:04  PAGE 2
+
+
+  B:00A0H.1       PUBLIC        IE74595_DS
+  C:0039H         PUBLIC        main
+  B:00A0H.0       PUBLIC        IE74595_SHCP
+  B:00A0H.2       PUBLIC        IE74595_STCP
+  -------         PROC          _IE74595_OUT_BYTE
+  D:0005H         SYMBOL        b
+  -------         DO            
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         6
+  C:0005H         LINE#         7
+  C:0005H         LINE#         9
+  C:0011H         LINE#         10
+  C:0011H         LINE#         11
+  C:002DH         LINE#         13
+  C:002FH         LINE#         14
+  C:0031H         LINE#         15
+  C:0034H         LINE#         16
+  C:0036H         LINE#         17
+  C:0038H         LINE#         18
+  -------         ENDPROC       _IE74595_OUT_BYTE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        b
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:0039H         LINE#         20
+  C:0039H         LINE#         21
+  C:0039H         LINE#         22
+  C:0039H         LINE#         23
+  C:0039H         LINE#         24
+  C:003CH         LINE#         25
+  C:0041H         LINE#         26
+  C:0048H         LINE#         27
+  C:0056H         LINE#         28
+  C:0056H         LINE#         29
+  C:005EH         LINE#         30
+  C:0062H         LINE#         31
+  C:0069H         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:006DH         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:006DH         LINE#         5
+  C:006DH         LINE#         6
+  C:006DH         LINE#         8
+  C:0077H         LINE#         9
+  C:0077H         LINE#         10
+  C:0085H         LINE#         11
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2023  21:59:04  PAGE 3
+
+
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+Program Size: data=11.0 xdata=0 code=153
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

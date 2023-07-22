@@ -1,0 +1,41 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2023 22:48:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "..\library\delay.h"
+   3          #include "..\library\ADC0804.h"
+   4          #include <stdio.h>
+   5          void main()
+   6          { 
+   7   1        unsigned char adc_value;
+   8   1        unsigned int t;
+   9   1        char buff[16];
+  10   1        while(1)
+  11   1        {
+  12   2            adc_value=ADC0804_Read();
+  13   2            t=adc_value*100.0f/255 +0.5f;
+  14   2            sprintf(buff,"nhiet do: %3d",t);
+  15   2          delay_ms(200);
+  16   2        }
+  17   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     80    ----
+   CONSTANT SIZE    =     14    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      19
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
