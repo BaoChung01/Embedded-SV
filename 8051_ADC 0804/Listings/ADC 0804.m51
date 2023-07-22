@@ -1,0 +1,156 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/28/2023  22:56:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj, .\Objects\ADC0804.obj TO .\Objects\ADC 0804 PRINT (
+>> .\Listings\ADC 0804.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  .\Objects\ADC0804.obj (ADC0804)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+
+
+LINK MAP OF MODULE:  .\Objects\ADC 0804 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     01C5H     UNIT         ?C?LIB_CODE
+            CODE    01C8H     0024H     UNIT         ?PR?MAIN?MAIN
+            CODE    01ECH     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    020CH     0012H     UNIT         ?PR?ADC0804_READ?ADC0804
+            CODE    021EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\ADC 0804 (MAIN)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                    0008H    0003H
+  +--> ?PR?ADC0804_READ?ADC0804
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\ADC 0804 (MAIN)
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/28/2023  22:56:35  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:01C8H         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        adc_value
+  D:0009H         SYMBOL        voltage
+  -------         ENDDO         
+  C:01C8H         LINE#         11
+  C:01C8H         LINE#         12
+  C:01C8H         LINE#         16
+  C:01C8H         LINE#         17
+  C:01C8H         LINE#         18
+  C:01CBH         LINE#         19
+  C:01E3H         LINE#         20
+  C:01EAH         LINE#         21
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:01ECH         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:01ECH         LINE#         5
+  C:01ECH         LINE#         6
+  C:01ECH         LINE#         8
+  C:01F6H         LINE#         9
+  C:01F6H         LINE#         10
+  C:0204H         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        ADC0804
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00B0H.1       PUBLIC        ADC0804_RD
+  B:00B0H.0       PUBLIC        ADC0804_CS
+  B:00B0H.2       PUBLIC        ADC0804_WR
+  B:00B0H.3       PUBLIC        ADC0804_INTR
+  C:020CH         PUBLIC        ADC0804_Read
+  -------         PROC          ADC0804_READ
+  -------         DO            
+  D:0007H         SYMBOL        kq
+  -------         ENDDO         
+  C:020CH         LINE#         4
+  C:020CH         LINE#         5
+  C:020CH         LINE#         7
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/28/2023  22:56:35  PAGE 3
+
+
+  C:020EH         LINE#         9
+  C:0210H         LINE#         10
+  C:0212H         LINE#         12
+  C:0215H         LINE#         13
+  C:0219H         LINE#         14
+  C:021BH         LINE#         15
+  C:021DH         LINE#         16
+  C:021DH         LINE#         18
+  -------         ENDPROC       ADC0804_READ
+  -------         ENDMOD        ADC0804
+
+  -------         MODULE        ?C?FPADD
+  C:000AH         PUBLIC        ?C?FPADD
+  C:0006H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FCAST
+  C:0105H         PUBLIC        ?C?FCASTC
+  C:0100H         PUBLIC        ?C?FCASTI
+  C:00FBH         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:0139H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:01BAH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+Program Size: data=12.0 xdata=0 code=554
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
