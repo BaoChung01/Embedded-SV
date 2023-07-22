@@ -1,0 +1,143 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/27/2023 23:10:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "..\library\delay.h"
+   3          #define UP  0
+   4          #define DOWN 1
+   5          sbit PWM_PIN=P2^0;
+   6          
+   7          unsigned int T, Ton, Toff;
+   8          unsigned char Ton_h_reload, Ton_l_reload, Toff_h_reload, Toff_l_reload;
+   9          
+  10          // ck (us)
+  11          void PWM_Init(unsigned int ck)
+  12          {
+  13   1        PWM_PIN=1;
+  14   1        
+  15   1        TMOD&=0xF0; // xoa di cac bit chon mode cua timer0
+  16   1        TMOD|=0x01;  // timer0 hoat dong o mode 1
+  17   1        
+  18   1        ET0=1;      /// cho phep ngat timer0
+  19   1        EA=1;       // cho phep ngat toan cuc
+  20   1        
+  21   1        T=ck;
+  22   1        Ton=T/2;    // duty cylce 50%
+  23   1        Toff=T-Ton;
+  24   1        
+  25   1        Ton_h_reload=(65536-Ton)>>8;
+  26   1        Ton_l_reload=(65536-Ton)&0x00FF;
+  27   1        
+  28   1        Toff_h_reload=(65536-Toff)>>8;
+  29   1        Toff_l_reload=(65536-Ton)&0x00FF;
+  30   1        
+  31   1        TH0=Ton_h_reload;
+  32   1        TL0=Toff_h_reload;
+  33   1        
+  34   1      }
+  35          
+  36          void PWM_Start()
+  37          {
+  38   1        TR0=1;    //timer 0 bat dau dem
+  39   1        
+  40   1      }
+  41          void PWM_Stop()
+  42          {
+  43   1          TR0=0;    // timer 0 ngung dem
+  44   1      }
+  45          void PWM_Set_Duty(unsigned char duty)
+  46          { 
+  47   1        if(duty==0)
+  48   1        {
+  49   2              PWM_PIN=0;
+  50   2              ET0=0;
+  51   2        }
+  52   1        else if(duty==100)
+  53   1        {
+  54   2            PWM_PIN=1;
+C51 COMPILER V9.60.0.0   MAIN                                                              04/27/2023 23:10:39 PAGE 2   
+
+  55   2              ET0=0;
+  56   2        }
+  57   1      
+  58   1        else
+  59   1        {
+  60   2        Ton=((unsigned long)T)*duty/100;
+  61   2        Toff=T-Ton;
+  62   2        
+  63   2        Ton_h_reload=(65536-Ton)>>8;
+  64   2        Ton_l_reload=(65536-Ton)&0x00FF;
+  65   2        
+  66   2        Toff_h_reload=(65536-Toff)>>8;
+  67   2        Toff_l_reload=(65536-Ton)&0x00FF;
+  68   2        
+  69   2        ET0=1;
+  70   2        }
+  71   1      }
+  72          void main()
+  73          { 
+  74   1        unsigned char dir=UP, duty=UP;
+  75   1        PWM_Init(1000); // chu ki T=1000us=1ms
+  76   1        PWM_Set_Duty(0);
+  77   1        
+  78   1        PWM_Start();
+  79   1        while(1)
+  80   1        {   
+  81   2          delay_ms(100);
+  82   2            if (dir==UP)
+  83   2            {
+  84   3              duty=duty+2;
+  85   3              if(duty==100)
+  86   3              {
+  87   4                dir=DOWN;
+  88   4              }
+  89   3            }
+  90   2          else
+  91   2          {
+  92   3            duty-=2;
+  93   3            if(duty==0)
+  94   3            {
+  95   4              dir=UP;
+  96   4            }
+  97   3          }
+  98   2          PWM_Set_Duty(duty);
+  99   2        } 
+ 100   1      }
+ 101          
+ 102          void Timer0_Overflow() interrupt 1
+ 103          {
+ 104   1        PWM_PIN=!PWM_PIN;
+ 105   1        if (PWM_PIN==0)
+ 106   1        {
+ 107   2          TH0=Toff_h_reload;
+ 108   2          TL0=Toff_l_reload;
+ 109   2        }
+ 110   1        else 
+ 111   1        {
+ 112   2          TH0=Ton_h_reload;
+ 113   2          TL0=Ton_l_reload;
+ 114   2        }
+ 115   1      }
+
+C51 COMPILER V9.60.0.0   MAIN                                                              04/27/2023 23:10:39 PAGE 3   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    347    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

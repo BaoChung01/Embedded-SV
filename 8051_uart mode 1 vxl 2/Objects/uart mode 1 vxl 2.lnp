@@ -1,0 +1,6 @@
+".\Objects\main.obj",
+".\Objects\uartmode1.obj" 
+TO ".\Objects\uart mode 1 vxl 2" 
+
+PRINT(".\Listings\uart mode 1 vxl 2.map") ru
+
