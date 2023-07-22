@@ -1,0 +1,50 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/25/2023 21:24:22 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          
+   3          void delay_ms_timer0(unsigned int t)
+   4          {
+   5   1        do {
+   6   2        TL0=0x18;
+   7   2        TH0=0xFC;
+   8   2        TR0=1;  // timer 0 bat dau dem
+   9   2      
+  10   2        while(!TF0);
+  11   2        TR0=0; // timer0 ngung dem
+  12   2        TF0=0;
+  13   2        t--;
+  14   2      }while (t!=0);
+  15   1      }
+  16          void main()
+  17          {
+  18   1          // chon mode cho T0
+  19   1        TMOD &=0xF0; // xoa cac bit dieu khien thanh ghi tmod cua t0
+  20   1        TMOD |=0x01; // chon mode 1 cho timer0
+  21   1        while(1)
+  22   1        {
+  23   2          P2_0=~P2_0;
+  24   2          delay_ms_timer0(1000);
+  25   2        }
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

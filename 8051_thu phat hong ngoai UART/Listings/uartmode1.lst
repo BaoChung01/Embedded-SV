@@ -1,0 +1,80 @@
+C51 COMPILER V9.60.0.0   UARTMODE1                                                         04/26/2023 23:47:32 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UARTMODE1
+OBJECT MODULE PLACED IN .\Objects\uartmode1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\Library\uartmode1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT
+                    -(.\Listings\uartmode1.lst) TABS(2) OBJECT(.\Objects\uartmode1.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "..\library\uartmode1.h"
+   3          
+   4          #if(FREQ_OSC!=11059200)
+                  #error "thu vien uart mode 1 chi ho tro tan so hoat dong laf 11059200"
+              #endif
+   7          void uart_init()
+   8          {
+   9   1        SM0=0;
+  10   1        SM1=1;// uart mode 1
+  11   1        
+  12   1        TMOD&=0x0F; ///0010 xxxx timer 1 hoat dong o che do 8 bit tu dong lap lai
+  13   1        TMOD|=0x20;
+  14   1        
+  15   1        #if(BAUD_RATE==9600)
+                TH1=0xFD;// toc do baud 9600
+                #elif(BAUD_RATE==2400)
+                TH1=0xF4;
+                #elif(BAUD_RATE==1200)
+  20   1        TH1=0xE8;
+  21   1        #elif(BAUD_RATE==19200)
+                TH1=0xFD;
+                PCON|=0x80;
+                #else
+                  #error "toc dau baud chi co the la 1 trong 4 so sau 19200, 9600, 2400,1200"
+                  #endif
+  27   1        TR1=1; //timer 1 bat dau chay;
+  28   1        TI=1;   // san sang gui du lieu
+  29   1        REN=1;  // cho phep nhan du lieu
+  30   1      }
+  31          void uart_write(char c)
+  32          {
+  33   1          while(TI==0);
+  34   1            TI=0;
+  35   1            SBUF=c;
+  36   1      }
+  37          char uart_data_ready()
+  38          {
+  39   1        return RI;
+  40   1      }
+  41          char uart_read()
+  42          {
+  43   1        RI=0;
+  44   1        return SBUF;
+  45   1      }
+  46          void uart_write_text(char *str)
+  47          { 
+  48   1        unsigned char i=0;
+  49   1        while(str[i]!=0)
+  50   1        {
+  51   2          uart_write(str[i]);
+  52   2          i++;
+  53   2        }
+  54   1      }
+C51 COMPILER V9.60.0.0   UARTMODE1                                                         04/26/2023 23:47:32 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     76    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
