@@ -1,0 +1,150 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/14/2023  22:44:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\hieu ung PRINT (.\Listings\hieu ung.m51
+>> ) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\hieu ung (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+                    000AH     0016H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?MAIN
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0059H     UNIT         ?PR?MAIN?MAIN
+            CODE    00E8H     0029H     UNIT         ?PR?DELAYVAKIEMTRANUT?MAIN
+            CODE    0111H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0131H     0003H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\hieu ung (MAIN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                      0008H    0001H
+  +--> ?PR?DELAYVAKIEMTRANUT?MAIN
+
+?PR?DELAYVAKIEMTRANUT?MAIN         0009H    0001H
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\hieu ung (MAIN)
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/14/2023  22:44:19  PAGE 2
+
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:008FH         PUBLIC        main
+  C:00E8H         PUBLIC        delayvakiemtranut
+  B:0020H.0       PUBLIC        keybreak
+  B:0090H.0       PUBLIC        BTN
+  -------         PROC          DELAYVAKIEMTRANUT
+  -------         DO            
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:00E8H         LINE#         7
+  C:00E8H         LINE#         8
+  C:00E8H         LINE#         10
+  C:00F6H         LINE#         11
+  C:00F6H         LINE#         12
+  C:00FDH         LINE#         13
+  C:0100H         LINE#         14
+  C:0103H         LINE#         15
+  C:0103H         LINE#         17
+  C:0105H         LINE#         18
+  C:0108H         LINE#         19
+  C:0108H         LINE#         20
+  C:0108H         LINE#         21
+  C:010AH         LINE#         22
+  C:010AH         LINE#         23
+  C:010AH         LINE#         24
+  C:010EH         LINE#         25
+  C:0110H         LINE#         26
+  -------         ENDPROC       DELAYVAKIEMTRANUT
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:008FH         LINE#         27
+  C:008FH         LINE#         30
+  C:008FH         LINE#         31
+  C:0092H         LINE#         32
+  C:009FH         LINE#         33
+  C:00A5H         LINE#         34
+  C:00A5H         LINE#         35
+  C:00A8H         LINE#         36
+  C:00ACH         LINE#         37
+  C:00BAH         LINE#         38
+  C:00BAH         LINE#         39
+  C:00BDH         LINE#         40
+  C:00C3H         LINE#         41
+  C:00C3H         LINE#         42
+  C:00C6H         LINE#         43
+  C:00CAH         LINE#         44
+  C:00CDH         LINE#         45
+  C:00DBH         LINE#         46
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/14/2023  22:44:19  PAGE 3
+
+
+  C:00E1H         LINE#         47
+  C:00E1H         LINE#         48
+  C:00E4H         LINE#         49
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0111H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0111H         LINE#         5
+  C:0111H         LINE#         6
+  C:0111H         LINE#         8
+  C:011BH         LINE#         9
+  C:011BH         LINE#         10
+  C:0129H         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+Program Size: data=11.1 xdata=0 code=308
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

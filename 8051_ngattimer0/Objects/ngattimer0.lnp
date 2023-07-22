@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\ngattimer0" 
+PRINT(".\Listings\ngattimer0.m51") RAMSIZE(256) 

@@ -1,0 +1,163 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/26/2023  22:33:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\phat hong ngoai PRINT (.\Listings\phat 
+>> hong ngoai.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\delay.obj (DELAY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\phat hong ngoai (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+                    000BH     0015H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0029H     UNIT         ?PR?GUIBIT?MAIN
+            CODE    002CH     0024H     UNIT         ?PR?MAIN?MAIN
+            CODE    0050H     0023H     UNIT         ?PR?_GUIBYTE?MAIN
+            CODE    0073H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0093H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\phat hong ngoai (MAIN)
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  -----    -----      0008H    0001H
+  +--> ?PR?_GUIBYTE?MAIN
+  +--> ?PR?_DELAY_MS?DELAY
+
+?PR?_GUIBYTE?MAIN              -----    -----      0009H    0002H
+  +--> ?PR?GUIBIT?MAIN
+
+?PR?GUIBIT?MAIN                0020H.0  0000H.1    -----    -----
+  +--> ?PR?_DELAY_MS?DELAY
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2023  22:33:32  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\phat hong ngoai (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0003H         PUBLIC        guibit
+  B:0090H.0       PUBLIC        P1_0
+  D:00CBH         PUBLIC        RCAP2H
+  D:00CAH         PUBLIC        RCAP2L
+  C:002CH         PUBLIC        main
+  D:00CDH         PUBLIC        TH2
+  D:00CCH         PUBLIC        TL2
+  B:00C8H.2       PUBLIC        TR2
+  D:00C9H         PUBLIC        T2MOD
+  D:00C8H         PUBLIC        T2CON
+  C:0050H         PUBLIC        _guibyte
+  -------         PROC          GUIBIT
+  B:0020H.0       SYMBOL        b
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+  C:0006H         LINE#         7
+  C:0006H         LINE#         8
+  C:0008H         LINE#         9
+  C:000FH         LINE#         10
+  C:0011H         LINE#         11
+  C:0013H         LINE#         12
+  C:0015H         LINE#         13
+  C:0017H         LINE#         15
+  C:0017H         LINE#         16
+  C:0019H         LINE#         17
+  C:0020H         LINE#         18
+  C:0022H         LINE#         19
+  C:0024H         LINE#         20
+  C:002BH         LINE#         21
+  C:002BH         LINE#         22
+  -------         ENDPROC       GUIBIT
+  -------         PROC          _GUIBYTE
+  D:0009H         SYMBOL        b
+  -------         DO            
+  D:000AH         SYMBOL        i
+  -------         ENDDO         
+  C:0050H         LINE#         23
+  C:0052H         LINE#         24
+  C:0052H         LINE#         26
+  C:0060H         LINE#         27
+  C:0060H         LINE#         28
+  C:0068H         LINE#         29
+  C:006EH         LINE#         30
+  C:0072H         LINE#         32
+  -------         ENDPROC       _GUIBYTE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        cnt
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2023  22:33:32  PAGE 3
+
+
+  -------         ENDDO         
+  C:002CH         LINE#         34
+  C:002CH         LINE#         35
+  C:002CH         LINE#         36
+  C:002FH         LINE#         37
+  C:0031H         LINE#         38
+  C:0034H         LINE#         40
+  C:0037H         LINE#         41
+  C:003AH         LINE#         42
+  C:003DH         LINE#         43
+  C:0040H         LINE#         45
+  C:0040H         LINE#         46
+  C:0040H         LINE#         47
+  C:0045H         LINE#         48
+  C:0047H         LINE#         49
+  C:004EH         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0073H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0073H         LINE#         5
+  C:0073H         LINE#         6
+  C:0073H         LINE#         8
+  C:007DH         LINE#         9
+  C:007DH         LINE#         10
+  C:008BH         LINE#         11
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
+Program Size: data=12.1 xdata=0 code=159
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

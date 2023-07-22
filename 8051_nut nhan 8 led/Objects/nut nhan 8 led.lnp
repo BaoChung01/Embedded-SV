@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\nut nhan 8 led" 
+PRINT(".\Listings\nut nhan 8 led.m51") RAMSIZE(256) 

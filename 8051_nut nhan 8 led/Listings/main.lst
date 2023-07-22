@@ -1,0 +1,59 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/14/2023 22:18:58 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "..\library\delay.h"
+   3          #define led P2
+   4          sbit on= P1^0;
+   5          sbit off= P1^1;
+   6          
+   7          unsigned char  delay1svaquetphim(){
+   8   1        unsigned char i;
+   9   1        for (i=0;i<100;i++){
+  10   2                delay_ms(10);
+  11   2              if (off==0)
+  12   2            {
+  13   3              led=0;
+  14   3              return 1;
+  15   3            }
+  16   2            }
+  17   1            return 0;
+  18   1          }
+  19          void main()
+  20          {
+  21   1        led=0;
+  22   1      while(1){
+  23   2        if(on==0)
+  24   2        {
+  25   3          while(1)
+  26   3          {
+  27   4              led=~led;
+  28   4            if(delay1svaquetphim())
+  29   4            {
+  30   5                break;
+  31   5            }
+  32   4          }
+  33   3        }
+  34   2              }
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     54    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
