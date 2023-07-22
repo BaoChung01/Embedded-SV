@@ -1,0 +1,3 @@
+".\Objects\32ledtraitim.obj" 
+TO ".\Objects\32ledtraitim" 
+PRINT(".\Listings\32ledtraitim.m51")

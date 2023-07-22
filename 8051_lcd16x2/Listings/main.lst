@@ -1,0 +1,114 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/21/2023 21:53:15 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "..\library\delay.h"
+   3          // khai bao ket noi lcd
+   4          sbit LCD_RS=P2^0;
+   5          sbit LCD_EN=P2^1;
+   6          
+   7          #define LCD_DATA P3
+   8          
+   9          void Lcd_cmd(unsigned char cmd)
+  10          {
+  11   1           LCD_RS=0;
+  12   1            LCD_DATA=cmd;
+  13   1            LCD_EN=0;
+  14   1            LCD_EN=1;
+  15   1            if(cmd<0x02)
+  16   1            {
+  17   2              delay_ms(2);
+  18   2            }
+  19   1            else 
+  20   1            {
+  21   2              delay_ms(1);
+  22   2            }
+  23   1      }
+  24          void Lcd_chr_cp(char c)
+  25          {
+  26   1           LCD_RS=1;
+  27   1            LCD_DATA=c;
+  28   1            LCD_EN=0;
+  29   1            LCD_EN=1;
+  30   1            delay_ms(1);
+  31   1      }
+  32          void Lcd_chr(unsigned char row, unsigned char col, char c)
+  33          {
+  34   1          // di chuyen con tro den vi tri can thiet
+  35   1          unsigned char cmd;
+  36   1        cmd = (row==1?0x80:0xC0)+col -1;
+  37   1        Lcd_cmd(cmd);
+  38   1        // xuat ki tu
+  39   1        Lcd_chr_cp(c);
+  40   1      }
+  41          void Lcd_out_cp(char *str)
+  42          {
+  43   1          unsigned char i=0;
+  44   1          while (str[i]!=0)
+  45   1          {
+  46   2            Lcd_chr_cp(str[i]);
+  47   2            i++;
+  48   2          }
+  49   1      }
+  50          void Lcd_Init()
+  51          {
+  52   1          Lcd_cmd(0x30);
+  53   1          delay_ms(5);
+  54   1          Lcd_cmd(0x30);
+C51 COMPILER V9.60.0.0   MAIN                                                              04/21/2023 21:53:15 PAGE 2   
+
+  55   1          delay_ms(1);
+  56   1          Lcd_cmd(0x30);
+  57   1        
+  58   1          Lcd_cmd(0x38);  // so dong hien thi la 2 f
+  59   1          
+  60   1          Lcd_cmd(0x01);// xoa man hinh
+  61   1        
+  62   1          Lcd_cmd(0x0C);//bat hien thi tat con tro
+  63   1      }
+  64          void Lcd_out(unsigned char row, unsigned char col, char *str)
+  65          {
+  66   1        // di chuyen con tro den vi tri can thiet
+  67   1          unsigned char cmd;
+  68   1        cmd = (row==1?0x80:0xC0)+col -1;
+  69   1        Lcd_cmd(cmd);
+  70   1        
+  71   1        Lcd_out_cp(str);
+  72   1      }
+  73          void main()
+  74          {
+  75   1        delay_ms(100);
+  76   1        Lcd_Init();
+  77   1        Lcd_out(1,1,"hello i love you forevel");
+  78   1        delay_ms(3000);
+  79   1        Lcd_cmd(0x1C);// dich phai
+  80   1        delay_ms(3000);
+  81   1        Lcd_cmd(0x1C);// dich phai
+  82   1        delay_ms(3000);
+  83   1        Lcd_cmd(0x02);// tra lai vi tri ban dau 
+  84   1        while(1)
+  85   1        {
+  86   2            
+  87   2        }
+  88   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    248    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

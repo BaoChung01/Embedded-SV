@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\led7doan" 
+PRINT(".\Listings\led7doan.m51") RAMSIZE(256) 
